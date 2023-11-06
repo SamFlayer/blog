@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import ReactMarkdown from 'react-markdown'
+import ReactMarkdown from 'react-markdown';
 import { Post } from '../components/Post';
 import { Index } from '../components/AddComment';
 import { CommentsBlock } from '../components/CommentsBlock';
@@ -33,7 +33,11 @@ export const FullPost = () => {
       <Post
         id={data._id}
         title={data.title}
-        imageUrl={data.imageUrl ? `http://localhost:4444${data.imageUrl}` : ''}
+        imageUrl={
+          data.imageUrl
+            ? `${process.env.REACT_APP_API_URL}${data.imageUrl}`
+            : ''
+        }
         user={data.user}
         createdAt={data.createdAt}
         viewsCount={data.viewsCount}
